@@ -24,45 +24,46 @@ module.exports = {
       },
       {
         test: /(\.scss|\.css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
           use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                import: true,
-                sourceMap: debug,
-                getLocalIdent: (context, localIdentName, localName, options) => {
-                  return localName
-                },
-                importLoaders: 1,
-                // localIdentName: '[hash:base64]-[name]-[local]'
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => {
-                  return [
-                    require('postcss-cssnext')
-                  ];
-                }
-              }
-            },
-            {
-              loader: "sass-loader",
-              options: {
-                import: true,
-                sourceMap: debug,
-                // data: '@import "' + path.resolve(__dirname, 'src/scss/main/theme.css') + '";',
-                getLocalIdent: (context, localIdentName, localName, options) => {
-                  return localName
-                }
-              }
-            }
+              {
+                  loader: 'style-loader',
+              },
+              {
+                  loader: 'css-loader',
+                  options: {
+                      modules: true,
+                      import: true,
+                      sourceMap: debug,
+                      getLocalIdent: (context, localIdentName, localName, options) => {
+                          return localName
+                      },
+                      importLoaders: 1,
+                      // localIdentName: '[hash:base64]-[name]-[local]'
+                  }
+              },
+              {
+                  loader: "sass-loader",
+                  options: {
+                      import: true,
+                      sourceMap: debug,
+                      // data: '@import "' + path.resolve(__dirname, 'src/scss/main/theme.css') + '";',
+                      getLocalIdent: (context, localIdentName, localName, options) => {
+                          return localName
+                      }
+                  }
+              },
+              {
+                  loader: 'postcss-loader',
+                  // options: {
+                  //     plugins: () => {
+                  //         return [
+                  //             require('postcss-cssnext')
+                  //         ];
+                  //     }
+                  // }
+              },
           ]
-        })
+
       }
     ]
   },
@@ -72,6 +73,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     publicPath: "/dist/",
-    filename: "/js/bundle.js"
+    filename: "js/bundle.js"
   }
 };

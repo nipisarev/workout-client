@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "node webpack-dev-server",
+    "start": "node ./node_modules/.bin/webpack-dev-server --hot --inline",
     "build": "NODE_ENV=production webpack --progress",
     "dev-build": "webpack --progress",
     "watch": "webpack --progress --colors --watch"
@@ -29,7 +29,7 @@
     "toolbox-loader": "0.0.3",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.4.2"
   },
   "name": "workout-client",
   "description": "",
@@ -51,7 +51,7 @@
     "express": "^4.14.1",
     "postcss": "^5.2.16",
     "postcss-cssnext": "^2.10.0",
-    "react": "^15.4.2",
+    "react": "^15.5.0",
     "react-addons-css-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
