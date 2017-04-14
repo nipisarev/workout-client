@@ -1,0 +1,61 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "node webpack-dev-server",
+    "build": "NODE_ENV=production webpack --progress",
+    "dev-build": "webpack --progress",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "devDependencies": {
+    "axios": "^0.15.3",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "bootstrap-sass": "^3.3.7",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.2",
+    "postcss-loader": "^1.3.3",
+    "sass-loader": "^6.0.3",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.13.1",
+    "toolbox-loader": "0.0.3",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "name": "workout-client",
+  "description": "",
+  "version": "0.0.1",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:nipisarev/workout-client.git"
+  },
+  "author": "npisarev",
+  "license": "MIT",
+  "homepage": "https://github.com/nipisarev/workout-client",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-plugin-transform-class-properties": "^6.22.0",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "postcss": "^5.2.16",
+    "postcss-cssnext": "^2.10.0",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-toolbox": "^2.0.0-beta.4"
+  }
+}
