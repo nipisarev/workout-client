@@ -1,4 +1,3 @@
-console.log('diman');
 module.exports = {
     plugins: {
         'postcss-cssnext': {

@@ -5,7 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   context: path.join(__dirname, "/src"),
-  devtool: debug ? "source-map" : null,
+  devtool: debug ? "source-map" : false,
   entry: "./app.js",
   module: {
     rules: [
@@ -19,50 +19,49 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: "file-loader?name=[path]/[name].[ext]"
+        test: /\.(jpe?g|png|gif|eot|woff|ttf|svg|woff2)$/,
+        use: [
+          {
+            loader: "file-loader?name=[path]/[name].[ext]"
+          },
+          {
+            loader: "url-loader"
+          }
+        ]
       },
       {
-        test: /(\.scss|\.css)$/,
-          use: [
-              {
-                  loader: 'style-loader',
+        test: /(\.s?css)$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              import: true,
+              sourceMap: debug,
+              getLocalIdent: (context, localIdentName, localName, options) => {
+                return localName
               },
-              {
-                  loader: 'css-loader',
-                  options: {
-                      modules: true,
-                      import: true,
-                      sourceMap: debug,
-                      getLocalIdent: (context, localIdentName, localName, options) => {
-                          return localName
-                      },
-                      importLoaders: 1,
-                      // localIdentName: '[hash:base64]-[name]-[local]'
-                  }
-              },
-              {
-                  loader: "sass-loader",
-                  options: {
-                      import: true,
-                      sourceMap: debug,
-                      // data: '@import "' + path.resolve(__dirname, 'src/scss/main/theme.css') + '";',
-                      getLocalIdent: (context, localIdentName, localName, options) => {
-                          return localName
-                      }
-                  }
-              },
-              {
-                  loader: 'postcss-loader',
-                  // options: {
-                  //     plugins: () => {
-                  //         return [
-                  //             require('postcss-cssnext')
-                  //         ];
-                  //     }
-                  // }
-              },
-          ]
+              importLoaders: 1,
+              localIdentName: '[hash:base64]-[name]-[local]'
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              import: true,
+              sourceMap: debug,
+              getLocalIdent: (context, localIdentName, localName, options) => {
+                return localName
+              }
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+        ]
 
       }
     ]
@@ -70,9 +69,13 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin("/css/app.css")
   ],
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 8080,
+  },
   output: {
     path: path.join(__dirname, "dist"),
-    publicPath: "/dist/",
+    publicPath: "",
     filename: "js/bundle.js"
   }
 };
