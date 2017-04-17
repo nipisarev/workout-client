@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "node ./node_modules/.bin/webpack-dev-server --hot --inline",
+    "start": "node ./node_modules/.bin/webpack-dev-server --hot --inline && ./node_modules/.bin/jscodeshift -t react-codemod/transforms/React-PropTypes-to-prop-types.js node_modules/react-toolbox/lib/button/index.js",
     "build": "NODE_ENV=production webpack --progress",
     "dev-build": "webpack --progress",
     "watch": "webpack --progress --colors --watch"
@@ -12,6 +12,7 @@
     "babel-loader": "^6.2.10",
     "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
@@ -20,6 +21,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "jquery": "^3.1.1",
+    "jscodeshift": "^0.3.30",
     "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "node-sass": "^4.5.2",
@@ -53,6 +55,7 @@
     "express": "^4.14.1",
     "postcss": "^5.2.16",
     "postcss-cssnext": "^2.10.0",
+    "prop-types": "^15.5.8",
     "react": "^15.5.0",
     "react-addons-css-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
