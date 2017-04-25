@@ -1,25 +1,39 @@
 {
   "private": true,
   "scripts": {
-    "start": "node ./node_modules/.bin/webpack-dev-server --hot --inline",
-    "build": "NODE_ENV=production webpack --progress",
-    "dev-build": "webpack --progress",
-    "watch": "webpack --progress --colors --watch"
+    "dev-server:client": "webpack-dev-server --env.type=client --env.devServer --watch",
+    "dev-server:server": "webpack --env.type=server --watch",
+    "build:server": "webpack --env.type=server",
+    "build:client": "webpack --env.type=client",
+    "build:server-prod": "npm run flow && webpack --env.type=server --env.prod",
+    "build:client-prod": "npm run flow && webpack --env.type=client --env.prod",
+    "build-prod": "npm run build:server-prod && npm run build:client-prod",
+    "build": "npm run build:server && npm run build:client",
+    "start": "node build/server prod",
+    "start-dev": "node build/server",
+    "flow": "flow"
   },
   "devDependencies": {
     "axios": "^0.15.3",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap-sass": "^3.3.7",
+    "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.26.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3",
+    "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
-    "jquery": "^3.1.1",
+    "flow-bin": "^0.44.2",
+    "json-loader": "^0.5.4",
     "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "node-sass": "^4.5.2",
@@ -57,7 +71,11 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
     "react-tap-event-plugin": "^2.0.1",
-    "react-toolbox": "^2.0.0-beta.4"
+    "react-toolbox": "^2.0.0-beta.4",
+    "redux": "^3.6.0"
   }
 }
